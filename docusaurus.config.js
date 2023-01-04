@@ -47,7 +47,8 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [require.resolve('./src/css/global.css'),
+          require.resolve('./src/css/sidebar.css')],
         },
       }),
     ],
@@ -57,25 +58,27 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
+        // logo: {
+        //   alt: 'My Site Logo',
+        //   src: 'img/logo.svg',
+        // },
+        title: `GongSakura's wiki`,
         items: [
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+
+
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/gongsakura',
             label: 'GitHub',
             position: 'right',
           },
         ],
+
       },
       footer: {
         style: 'dark',
