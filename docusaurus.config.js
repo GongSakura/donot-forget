@@ -13,11 +13,11 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-
+  trailingSlash:false,
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'gongsakura', // Usually your GitHub org/user name.
-  projectName: 'doooooc', // Usually your repo name.
+  projectName: 'DonotForget', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -62,16 +62,14 @@ const config = {
         //   alt: 'My Site Logo',
         //   src: 'img/logo.svg',
         // },
-        title: `GongSakura's wiki`,
+        title: `DonotForget`,
         items: [
           {
             type: 'doc',
+            label: 'Docs',
             docId: 'intro',
             position: 'left',
-            label: 'Docs',
           },
-
-
           {
             href: 'https://github.com/gongsakura',
             label: 'GitHub',
