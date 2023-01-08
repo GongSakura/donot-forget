@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
+echo 'commit-msg: all arugments:'
+echo ${@:-1}
+echo "$(dirname -- "$0")/_/husky.sh"
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx --no -- commitlint --edit ${1}
-echo ${}

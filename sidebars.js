@@ -20,6 +20,11 @@ const sidebars = {
       label: 'Git',
       items: ['git/hooks'],
     },
+    {
+      type: 'category',
+      label: 'Shell Scripting',
+      items: ['shell/variable'],
+    },
   ]
 };
 
