@@ -1,7 +1,7 @@
 # Variable
 A **variable** in shell instance is a character string to which we assign a value, and the value is **untyped**.
 
-## Syntax
+## Declaring Syntax
 There are **no whitespaces** around equal sign(=).
 ```bash showLineNumbers
 v="Hello Shell"     # correct ✅
@@ -31,8 +31,7 @@ To use **unset** or set to empty string("") to delete variables
 ```bash showLineNumbers
 v="Hello Shell"
 echo $v     # print out "Hello Shell"
-
-unset v    # delete "v"
+unset v     # delete "v"
 echo $v     # print out empty string("")
 ```
 
@@ -44,17 +43,40 @@ echo $v     # print out empty string("")
     - They are **scoped** in a function or a block of code, and it declares with **local** prefix.
     ```bash showLineNumbers
     func(){
-      local v="Hello World"
-      echo $v                # print out "Hello World"
+      local v="Hello Shell"
+      echo $v                # print out "Hello Shell"
     }
     func                     # call the function             
-    echo $v                  # print out ""(empty string)
+    echo $v                  # print out empty string("")
     ```
+
 - **Global variables**
-    - They are **scoped** in the entire shell script. 
+    - They are **scoped** in the entire shell script, and can be declared in anywhere.
+    ```bash showLineNumbers
+    func(){
+      global_v="Hello Shell" # declared within a function
+    }
+    echo $global_v           # print out empty string(""), because it has't declare yet
+    func                     # call the function             
+    echo $global_v           # print out "Hello Shell"
+
+    global_v2="Hello Shell"  # declared outside a function
+    echo $global_v2          # print out "Hello Shell"
+    ```
 
 - **Environment variables**
-    - They can be accessed throughout 
+    - They are accessible throughout xxx, global variables can become environment variables by exporting.
+    ```bash showLineNumbers
+    # script1.sh
+    v="Hello Shell"
+    export v
+
+    env        # Now, v=Hello Shell is in the output
+    printenv   # Now, v=Hello Shell is in the output
+
+    # script2.sh
+    echo $v    # print out "Hello Shell", because it became an environment variable
+    ```
 
 ## Reference
 1. [shell-scripting-different-types-of-variables](https://www.geeksforgeeks.org/shell-scripting-different-types-of-variables/)
