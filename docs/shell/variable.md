@@ -20,21 +20,28 @@ _v="Grace"    # correct ✅
 
 ## Opertations
 ### access
-It uses **dollar sign($)** to access variables.
+To use **dollar sign($)** to access variables.
 ```bash showLineNumbers
 v="Hello Shell"
-echo $v # print out "Hello Shell"
+echo $v     # print out "Hello Shell"
 ```
-
+### assign
 ### delete
+To use **unset** or set to empty string("") to delete variables
+```bash showLineNumbers
+v="Hello Shell"
+echo $v     # print out "Hello Shell"
 
+unset v    # delete "v"
+echo $v     # print out empty string("")
+```
 
 ### identifier
 
 
 ## Variables Types
 - **Local variables**
-    - They are **scoped** within a function or a block of code, and it declares with **local** prefix.
+    - They are **scoped** in a function or a block of code, and it declares with **local** prefix.
     ```bash showLineNumbers
     func(){
       local v="Hello World"
@@ -44,9 +51,10 @@ echo $v # print out "Hello Shell"
     echo $v                  # print out ""(empty string)
     ```
 - **Global variables**
-    - 
+    - They are **scoped** in the entire shell script. 
 
 - **Environment variables**
+    - They can be accessed throughout 
 
 ## Reference
 1. [shell-scripting-different-types-of-variables](https://www.geeksforgeeks.org/shell-scripting-different-types-of-variables/)
