@@ -1,5 +1,7 @@
 # Variable
-A **variable** in shell instance is a character string to which we assign a value, and the value is **untyped**.
+A **variable** is a character string to which we assign a value, and particularly the value is **untyped**. 
+
+Every shell instance(shell process) has its own variables. For example, if you create a variable "v" in a shell(called A), then you new a shell window(called B), the "v" is not existed in shell B.
 
 ## Declaring Syntax
 There are **no whitespaces** around equal sign(=).
@@ -51,7 +53,7 @@ echo $v     # print out empty string("")
     ```
 
 - **Global variables**
-    - They are **scoped** in the entire shell script, and can be declared in anywhere.
+    - They are **scoped** in the entire shell script, and can be declared in anywhere. In addition, 
     ```bash showLineNumbers
     func(){
       global_v="Hello Shell" # declared within a function
@@ -82,3 +84,4 @@ echo $v     # print out empty string("")
 1. [shell-scripting-different-types-of-variables](https://www.geeksforgeeks.org/shell-scripting-different-types-of-variables/)
 2. [Unix / Linux - Using Shell Variables](https://www.tutorialspoint.com/unix/unix-using-variables.htm)
 3. Learning the bash Shell - Unix Shell Programming
+4. [How to Use Bash Source Command](https://linuxhint.com/bash_source_example/)
