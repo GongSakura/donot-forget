@@ -4,7 +4,7 @@ A **variable** is a character string to which we assign a value, and particularl
 Every shell instance(shell process) maintains its own variables. For example, if you create a variable "v" in a shell(called A), then you new a shell window(called B), the "v" is not existed in shell B.
 
 ## Declaring Syntax
-There are **no whitespaces** around equal sign(=).<br/>
+There are **no whitespaces** around the **equal sign** `=`.<br/>
 ```bash showLineNumbers
 v="Hello Shell"     # correct ✅
 v= "Hello Shell"    # incorrect ❌
@@ -22,14 +22,27 @@ _v="Grace"    # correct ✅
 
 ## Opertations
 ### access
-To use **dollar sign($)** to access variables.
+Use **dollar sign** `$` to access variables.
 ```bash showLineNumbers
 v="Hello Shell"
-echo $v     # print out "Hello Shell"
+echo $v       # print: "Hello Shell"
 ```
+
+
+A more general style is to use **curly braces** `{}` to wrap the variable.
+
+```bash showLineNumbers
+v="Hello Shell"
+echo ${v}    # print: "Hello Shell"
+```
+
+
+single quote vs 
 ### assign
+TODO
+
 ### delete
-To use **unset** or set to empty string("") to delete variables
+Use `unset` or assign empty string("") to delete variables
 ```bash showLineNumbers
 v="Hello Shell"
 echo $v     # print out "Hello Shell"
@@ -37,7 +50,7 @@ unset v     # delete "v"
 echo $v     # print out empty string("")
 ```
 
-### identifier
+### attributes
 
 
 ## Variables Types
@@ -91,7 +104,7 @@ They are **scoped only** in a process of current shell, and they can be declared
     ```
 
 ## Reference
-1. [shell-scripting-different-types-of-variables](https://www.geeksforgeeks.org/shell-scripting-different-types-of-variables/)
-2. [Unix / Linux - Using Shell Variables](https://www.tutorialspoint.com/unix/unix-using-variables.htm)
-3. Learning the bash Shell - Unix Shell Programming
+1. Learning the bash Shell - Unix Shell Programming
+2. [shell-scripting-different-types-of-variables](https://www.geeksforgeeks.org/shell-scripting-different-types-of-variables/)
+3. [Unix / Linux - Using Shell Variables](https://www.tutorialspoint.com/unix/unix-using-variables.htm)
 4. [How to Use Bash Source Command](https://linuxhint.com/bash_source_example/)
