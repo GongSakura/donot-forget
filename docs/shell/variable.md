@@ -45,33 +45,34 @@ echo $v     # print out empty string("")
 They are **scoped only** in a function or a block of code, and it declares with `local` prefix.<br/><br/>
     ```bash showLineNumbers
     func(){
-    local v="Hello Shell"
-    echo $v                  # print out "Hello Shell"
+      local v="Hello Shell"
+      echo $v               
     }
-    func                     # call the function             
-    echo $v                  # print out empty string("")
+    
+    func                     # call the function, print: "Hello Shell"             
+    echo $v                  # access outside the function, print: empty string("")
     ```
     
 <br/>
 
-- **Global variables**
+- **Global variables**<br/>
 They are **scoped only** in a process of current shell, and they can be declared anywhere.<br/><br/>
     ```bash showLineNumbers
-    v="I'm v"         # declared a global variable outside a function
+    v="I'm v"         # declare a global variable outside a function
     func(){
-      v2="I'm v2"     # declared a global variable inside a function
+      v2="I'm v2"     # declare a global variable inside a function
       echo $v         # access inside a function
     }
    
     func              # call the function, print: "I'm v"             
     echo $v2          # print: "I'm v2"
     ```
-    
+
 <br/>
 
-- **Environment variables**
-    - They are **scoped** in both the main process and subprocesses of current shell, global variables can become environment variables by exporting.
-    - Use ` env ` or ` printenv ` commands to check whether a variable is the environment variable. 
+- **Environment variables**<br/>
+    - They are **scoped** in both the main process and subprocesses of the current shell, global variables can become environment variables by exporting.
+    - Use ` env ` or ` printenv ` commands to check whether a variable is the environment variable. <br/><br/>
     ```bash showLineNumbers
     # script1.sh
     v="Hello Shell"
