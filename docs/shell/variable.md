@@ -1,5 +1,5 @@
 # Variable
-A **variable** is a character string to which we assign a value, and particularly the value is **untyped**. 
+A **variable** is a character string to which we assign a value, and particularly the value is **untyped** by default. 
 
 Every shell instance(shell process) maintains its own variables. For example, if you create a variable "v" in a shell(called A), then you new a shell window(called B), the "v" is not existed in shell B.
 
