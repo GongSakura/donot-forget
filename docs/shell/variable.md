@@ -13,7 +13,7 @@ v ="Hello Shell"    # incorrect ❌
 ```
 
 ## Naming Rules
-A variable name can only be combined with **a-z**, **A-Z**, **0-9** and **underscore(_)**, and it cannot start with numbers.<br/>
+A valid name only consists of **a-z**, **A-Z**, **0-9** and **underscore(_)**, and it cannot start with numbers.<br/>
 ```bash showLineNumbers
 v="John"      # correct ✅
 _v="Grace"    # correct ✅
@@ -55,7 +55,7 @@ echo $v     # print out empty string("")
 <br/>
 
 - **Global variables**
-    - They are **scoped only** in the shell process where it has been declared.
+    - They are **scoped only** in the main process of current shell where it has been declared.
     ```bash showLineNumbers
     func(){
       global_v="Hello Shell" # declared within a function
@@ -71,20 +71,23 @@ echo $v     # print out empty string("")
 <br/>
 
 - **Environment variables**
-    - They are **scoped** in the entire shell process and its subprocesses, global variables can become environment variables by exporting.
-    - Use ` env ` or ` printenv ` to check whether a variable is the environment variable. 
+    - They are **scoped** in both the main process and subprocesses of current shell, global variables can become environment variables by exporting.
+    - Use ` env ` or ` printenv ` commands to check whether a variable is the environment variable. 
     ```bash showLineNumbers
     # script1.sh
     v="Hello Shell"
     export v
     
     # in terminal
-    ./script1.sh    # execute script1.sh
-    env             # Now, v=Hello Shell is in the output
-    printenv        # Now, v=Hello Shell is in the output
+    source script1.sh       # execute script1.sh in main process
+    env                     # Now, "v=Hello Shell" is in the output
+    printenv                # Now, "v=Hello Shell" is in the output
 
     # script2.sh
-    echo $v         # print out "Hello Shell", because it became an environment variable
+    echo $v                 # print out "Hello Shell", because it's a environment variable, and visible
+    
+    # in terminal
+    sh script2.sh           # execute script2.sh in subprocess, print out "v=Hello Shell"
     ```
 
 ## Reference
