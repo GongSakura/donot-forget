@@ -41,12 +41,12 @@ echo $v     # print out empty string("")
 
 
 ## Variables Types
-- **Local variables**
-    - They are **scoped only** in a function or a block of code, and it declares with `local` prefix.
+- **Local variables**<br/>
+They are **scoped only** in a function or a block of code, and it declares with `local` prefix.<br/><br/>
     ```bash showLineNumbers
     func(){
-      local v="Hello Shell"
-      echo $v                # print out "Hello Shell"
+    local v="Hello Shell"
+    echo $v                  # print out "Hello Shell"
     }
     func                     # call the function             
     echo $v                  # print out empty string("")
@@ -55,17 +55,16 @@ echo $v     # print out empty string("")
 <br/>
 
 - **Global variables**
-    - They are **scoped only** in the main process of current shell where it has been declared.
+They are **scoped only** in a process of current shell, and they can be declared anywhere.<br/><br/>
     ```bash showLineNumbers
+    v="I'm v"         # declared a global variable outside a function
     func(){
-      global_v="Hello Shell" # declared within a function
+      v2="I'm v2"     # declared a global variable inside a function
+      echo $v         # access inside a function
     }
-    echo $global_v           # print out empty string(""), because it has't declare yet
-    func                     # call the function             
-    echo $global_v           # print out "Hello Shell"
-
-    global_v2="Hello Shell"  # declared outside a function
-    echo $global_v2          # print out "Hello Shell"
+   
+    func              # call the function, print: "I'm v"             
+    echo $v2          # print: "I'm v2"
     ```
     
 <br/>
