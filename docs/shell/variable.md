@@ -1,7 +1,7 @@
 # Variable
 A **variable** is a character string to which we assign a value, and particularly the value is **untyped** by default. 
 
-Every shell instance(shell process) maintains its own variables. For example, if you create a variable "v" in a shell(called A), then you new a shell window(called B), the "v" is not existed in shell B.
+Every shell instance(shell process) maintains its own variables. For example, if you create a variable "v" in a shell A, then you new a shell window B (created another shell process), the "v" is not existed in shell B.
 
 ## Declaring Syntax
 There are **no whitespaces** around the **equal sign** `=`.<br/>
@@ -42,69 +42,77 @@ single quote vs
 TODO
 
 ### delete
-Use `unset` or assign empty string("") to delete variables
+Use `unset` or assign empty string(""), to delete variables.
 ```bash showLineNumbers
 v="Hello Shell"
-echo $v     # print out "Hello Shell"
 unset v     # delete "v"
-echo $v     # print out empty string("")
+echo $v     # print: null("")
 ```
 
 ### attributes
 
 
-## Variables Types
+## Variables scopes
+Different types of variables have different scopes(contexts), there are three kind of scopes:
+**local**, **global**, and **environment**.
+
+Noted, variables **local** to a subprocess(subshell), it means no matter what kinds of variables delcared in the subprocess, they are unaccessible and invisible to its main process(parent process), **scoped only** in subprocess.
+
 - **Local variables**<br/>
-They are **scoped only** in a function or a block of code, and it declares with `local` prefix.<br/><br/>
-    ```bash showLineNumbers
+They are **scoped only** in a function or a block of code, and it declares with `local` prefix.
+
+  ```bash showLineNumbers
     func(){
       local v="Hello Shell"
       echo $v               
     }
-    
-    func                     # call the function, print: "Hello Shell"             
-    echo $v                  # access outside the function, print: empty string("")
-    ```
+
+    func      # call the function, print: "Hello Shell"             
+    echo $v   # access outside the function, print: null("")
+  ```
     
 <br/>
 
 - **Global variables**<br/>
-They are **scoped only** in a process of current shell, and they can be declared anywhere.<br/><br/>
-    ```bash showLineNumbers
-    v="I'm v"         # declare a global variable outside a function
+They are **scoped only** in a process. They can be declared anywhere, and accessed anywhere within the process.
+
+  ```bash showLineNumbers
+    v="I'm v"         # declare outside a function
     func(){
-      v2="I'm v2"     # declare a global variable inside a function
+      v2="I'm v2"     # declare inside a function
       echo $v         # access inside a function
     }
-   
-    func              # call the function, print: "I'm v"             
+
+    func              # call the function, print: "I'm v"     
     echo $v2          # print: "I'm v2"
-    ```
+  ```
 
 <br/>
 
 - **Environment variables**<br/>
-    - They are **scoped** in both the main process and subprocesses of the current shell, global variables can become environment variables by exporting.
-    - Use ` env ` or ` printenv ` commands to check whether a variable is the environment variable. <br/><br/>
-    ```bash showLineNumbers
-    # script1.sh
-    v="Hello Shell"
-    export v
-    
-    # in terminal
-    source script1.sh       # execute script1.sh in main process
-    env                     # Now, "v=Hello Shell" is in the output
-    printenv                # Now, "v=Hello Shell" is in the output
+  They are **scoped** in both the main process and subprocesses, variables can be declared as environment variables by adding `export` prefix.
 
-    # script2.sh
-    echo $v                 # print out "Hello Shell", because it's a environment variable, and visible
-    
-    # in terminal
-    sh script2.sh           # execute script2.sh in subprocess, print out "v=Hello Shell"
+  Use ` env ` or ` printenv ` commands to check whether a variable is the environment variable.
+    ```bash showLineNumbers
+      # script1.sh
+      v="Hello Shell"
+      export v
+      
+      # in terminal
+      source script1.sh     # execute script1.sh in main process
+      env                   # Now, "v=Hello Shell" is in the output
+      printenv              # Now, "v=Hello Shell" is in the output
+
+      # script2.sh
+      echo $v               # print: "Hello Shell"
+      
+      # in terminal
+      sh script2.sh         # execute script2.sh in subprocess, print: "v=Hello Shell"
     ```
 
 ## Reference
-1. Learning the bash Shell - Unix Shell Programming
+1. Learning the bash Shell, 3rd Edition
 2. [shell-scripting-different-types-of-variables](https://www.geeksforgeeks.org/shell-scripting-different-types-of-variables/)
 3. [Unix / Linux - Using Shell Variables](https://www.tutorialspoint.com/unix/unix-using-variables.htm)
 4. [How to Use Bash Source Command](https://linuxhint.com/bash_source_example/)
+5. [Advanced Bash-Scripting Guide. Chapter21: subshells](https://tldp.org/LDP/abs/html/subshells.html)
