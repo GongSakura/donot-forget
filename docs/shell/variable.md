@@ -36,8 +36,9 @@ v="Hello Shell"
 echo ${v}    # print: "Hello Shell"
 ```
 
+<br/>
 
-### assign
+### Assign
 Assign plain text simply using **double quote**, or without quote.
 ```bash showLineNumbers
 v="Hi, do not forget!"
@@ -58,8 +59,24 @@ echo $v1    # print: "6"
 ```
 
 </br>
-Somethings, we would like to assign the output of a function, or a command, we need to use a mechanism called command substitution with the syntax like **$(<command> )** or using backward quote ` \`<command>\` `.
 
+Somethings, we would like to assign the output of a function, or a command, we need to use a mechanism called command substitution with the syntax like `$(<command> <args>)` or using backward quote `` `<command> <args>` ``.
+```bash showLineNumbers
+func(){
+  if [[ $1 == 1 ]]
+    then
+      echo "the first parameter is == 1"
+    else
+      echo "the first parameter is != 1"
+  fi
+}
+
+v=$(func "1")
+echo $v   # print: the first parameter is == 1
+
+v1=`func "2"`
+echo $v1  # print: the first parameter is != 1
+```
 
 ### delete
 Use `unset` or assign empty string(""), to delete variables.
@@ -136,3 +153,4 @@ They are **scoped only** in a process. They can be declared anywhere, and access
 3. [Unix / Linux - Using Shell Variables](https://www.tutorialspoint.com/unix/unix-using-variables.htm)
 4. [How to Use Bash Source Command](https://linuxhint.com/bash_source_example/)
 5. [Advanced Bash-Scripting Guide. Chapter21: subshells](https://tldp.org/LDP/abs/html/subshells.html)
+6. https://www.baeldung.com/linux/bash-single-vs-double-brackets
