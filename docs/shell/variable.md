@@ -21,13 +21,12 @@ _v="Grace"    # correct ✅
 ```
 
 ## Opertations
-### access
+### Access
 Use **dollar sign** `$` to access variables.
 ```bash showLineNumbers
 v="Hello Shell"
 echo $v       # print: "Hello Shell"
 ```
-
 
 A more general way is to use **curly braces** `{}` to wrap the variable.
 
@@ -44,7 +43,7 @@ Assign plain text simply using **double quote**, or without quote.
 v="Hi, do not forget!"
 v1=Hi
 v2="99"
-v3=123   # the value of v3 is not an integer.
+v3=123   # the value of v3 is not an integer
 ```
 
 </br>
@@ -60,7 +59,7 @@ echo $v1    # print: "6"
 
 </br>
 
-Somethings, we would like to assign the output of a function, or a command, we need to use a mechanism called command substitution with the syntax like `$(<command> <args>)` or using backward quote `` `<command> <args>` ``.
+Sometimes, we would like to assign the output of a function, or a command, we need to use a mechanism called **command substitution** with the syntax such as `$(<command> <args>)` or using backward quote `` `<command> <args>` ``.
 ```bash showLineNumbers
 func(){
   if [[ $1 == 1 ]]
@@ -74,11 +73,11 @@ func(){
 v=$(func "1")
 echo $v   # print: the first parameter is == 1
 
-v1=`func "2"`
-echo $v1  # print: the first parameter is != 1
+v=`func "2"`
+echo $v  # print: the first parameter is != 1
 ```
 
-### delete
+### Delete
 Use `unset` or assign empty string(""), to delete variables.
 ```bash showLineNumbers
 v="Hello Shell"
@@ -86,7 +85,7 @@ unset v     # delete "v"
 echo $v     # print: null("")
 ```
 
-### attributes
+### Attributes
 
 
 ## Variables scopes
@@ -136,9 +135,9 @@ They are **scoped only** in a process. They can be declared anywhere, and access
       export v
       
       # in terminal
-      source script1.sh     # execute script1.sh in main process
-      env                   # Now, "v=Hello Shell" is in the output
-      printenv              # Now, "v=Hello Shell" is in the output
+      source script1.sh     # execute script1.sh in current process
+      env                   # now, "v=Hello Shell" is in the output
+      printenv              # now, "v=Hello Shell" is in the output
 
       # script2.sh
       echo $v               # print: "Hello Shell"
