@@ -29,7 +29,7 @@ echo $v       # print: "Hello Shell"
 ```
 
 
-A more general style is to use **curly braces** `{}` to wrap the variable.
+A more general way is to use **curly braces** `{}` to wrap the variable.
 
 ```bash showLineNumbers
 v="Hello Shell"
@@ -37,9 +37,29 @@ echo ${v}    # print: "Hello Shell"
 ```
 
 
-single quote vs 
 ### assign
-TODO
+Assign plain text simply using **double quote**, or without quote.
+```bash showLineNumbers
+v="Hi, do not forget!"
+v1=Hi
+v2="99"
+v3=123   # the value of v3 is not an integer.
+```
+
+</br>
+
+If we would like to assign a numeric value, we need to add the `let` prefix.
+```bash showLineNumbers
+v=2*3       # without  prefix
+let v1=2*3  
+
+echo $v     # print: "2*3"
+echo $v1    # print: "6"
+```
+
+</br>
+Somethings, we would like to assign the output of a function, or a command, we need to use a mechanism called command substitution with the syntax like **$(<command> )** or using backward quote ` \`<command>\` `.
+
 
 ### delete
 Use `unset` or assign empty string(""), to delete variables.
