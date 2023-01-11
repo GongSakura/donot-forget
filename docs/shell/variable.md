@@ -52,7 +52,7 @@ v2="99"
 v3=123   # the value of v3 is not an integer
 ```
 
-</br>
+<br/>
 
 To assign a numeric value, we need to add the `let` prefix.
 ```bash showLineNumbers
@@ -63,9 +63,9 @@ echo $v     # print: "2*3"
 echo $v1    # print: "6"
 ```
 
-</br>
+<br/>
 
-Sometimes, we would like to assign the output of a function, or a command, we need to use a mechanism called **command substitution** with the syntax such as `$(<command> <args>)` or using backward quote `` `<command> <args>` ``.
+Sometimes, to assign the output of a function or a command, we need to use a mechanism called **command substitution** with syntax `$(<command> <args>)` or using backward quote `` `<command> <args>` ``.
 ```bash showLineNumbers
 func(){
   if [[ $1 == 1 ]]
