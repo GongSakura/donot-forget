@@ -13,18 +13,17 @@ v ="Hello Shell"    # incorrect ❌
 ```
 
 ## Naming Rules
-A name:
-- only consists of **a-z**, **A-Z**, **0-9** and **underscore(_)** 
-- cann't start with numbers
-- case sensitive
-- use Snake Case is a good choice
-- Conventionally, environment variables use uppercase letters
+- Only consist of **a-z**, **A-Z**, **0-9** and **underscore(_)** 
+- Can't start with numbers
+- Case sensitive
+- Use Snake Case is a good choice
+- In convention, environment variables use uppercase letters
 
 ```bash showLineNumbers
-v="John"          # correct ✅
-_v="Grace"        # correct ✅
-HOME_PATH="Earth" # correct ✅
-1v="Tom"          # incorrect ❌
+v="John"               # correct ✅
+_v="Grace"             # correct ✅
+HOME_PATH="/usr/bin"   # correct ✅
+1v="Tom"               # incorrect ❌
 ```
 
 ## Opertations
