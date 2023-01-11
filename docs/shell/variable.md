@@ -44,7 +44,7 @@ echo ${v}    # print: "Hello Shell"
 <br/>
 
 ### Assign
-Assign plain text simply using **double quote**, or without quote.
+To assign plain text, simply using **double quote**, or without quote.
 ```bash showLineNumbers
 v="Hi, do not forget!"
 v1=Hi
@@ -54,7 +54,7 @@ v3=123   # the value of v3 is not an integer
 
 </br>
 
-If we would like to assign a numeric value, we need to add the `let` prefix.
+To assign a numeric value, we need to add the `let` prefix.
 ```bash showLineNumbers
 v=2*3       # without  prefix
 let v1=2*3  
@@ -83,15 +83,39 @@ v=`func "2"`
 echo $v  # print: the first parameter is != 1
 ```
 
+<br/>
+
 ### Delete
 Use `unset` or assign empty string(""), to delete variables.
 ```bash showLineNumbers
 v="Hello Shell"
-unset v     # delete "v"
-echo $v     # print: null("")
+unset v           # delete "v"
+echo $v           # print: null("")
+
+v1="Hello Delete"
+v1=""             # not recommended, it's unclear in semantics
 ```
 
+<br/>
+
 ### Attributes
+Use `declare` or `typeset` to add attributes to a variable, different attributes have different usages.
+
+Some commonly used attributes are shown as following:
+- `declare -p <variable_name>`<br/>
+Print out all attributes of a variable.
+
+- `declare -r <variable_name>`<br/>
+Set a variable readonly.
+
+- `declare -x <variable_name>`<br/>
+Set a variable as environment variable.
+
+- `declare -u <variable_name>`<br/>
+Set the value of a variable to uppercase.
+
+- `declare -l <variable_name>`<br/>
+Set the value of a variable to lowercase.
 
 
 ## Variables scopes
