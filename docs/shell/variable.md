@@ -102,20 +102,13 @@ v1=""             # not recommended, it's unclear in semantics
 Use `declare` or `typeset` to add attributes to a variable, different attributes have different usages.
 
 Some commonly used attributes are shown as following:
-- `declare -p <variable_name>`<br/>
-Print out all attributes of a variable.
-
-- `declare -r <variable_name>`<br/>
-Set a variable readonly.
-
-- `declare -x <variable_name>`<br/>
-Set a variable as environment variable.
-
-- `declare -u <variable_name>`<br/>
-Set the value of a variable to uppercase.
-
-- `declare -l <variable_name>`<br/>
-Set the value of a variable to lowercase.
+| command| result|
+| :-:|:-:|
+| `declare -p <variable_name>`  |  Print out all attributes of a variable. |
+| `declare -r <variable_name>`  |  Make a variable readonly. |
+| `declare -x <variable_name>`  |  Set a variable as environment variable |
+| `declare -u <variable_name>`  | Set the value of a variable to uppercase  |
+| `declare -l <variable_name>`  |  Set the value of a variable to lowercase. |
 
 
 ## Variables scopes
