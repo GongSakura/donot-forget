@@ -110,6 +110,15 @@ Some commonly used attributes are shown as following:
 | `declare -u <variable_name>`  | Set the value of a variable to uppercase  |
 | `declare -l <variable_name>`  |  Set the value of a variable to lowercase. |
 
+If you would like to remove attributes, use `+`. For example:
+```bash showLineNumbers
+declare -r v=readonly!
+declare -p v    # print: "typeset -r v=readonly!"
+
+declare +r v    # remove readonly attribute
+declare -p v    # print: "typeset v=readonly!"
+```
+
 
 ## Variables scopes
 Different types of variables have different scopes(contexts), there are three kind of scopes:
