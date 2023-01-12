@@ -4,17 +4,19 @@ Git hooks provide developers with the ability to run scripts during git executio
 
 There are two group of hooks: 
 - **client-side**<br/>
-    Hooks runs on local git repository during such as commit, rebase, merge, checkout, and push.
+    Hooks runs on local git repository during such as merge, commit, checkout and push.
 - **server-side**<br/>
     Hooks runs on remote git repository during receiving push from clients, and updating branches.
 
 
-
-## 1. Client-side Hooks
+## Client-side Hooks
 ### pre-commit
-xxx
-## 2. Server-side Hooks
-## 3. Tools for hooks
+### prepare-commit-msg
+### pre-commit
+
+
+## Server-side Hooks
+## Tools for hooks
 ## Reference
 
 
