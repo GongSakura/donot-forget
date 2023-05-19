@@ -7,16 +7,17 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const config = {
   title: 'Learning Journal',
   tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://gongsakura.github.io',
   baseUrl: '/',
+  projectName:"donot-forget",
+  organizationName: 'gongsakura', // Usually your GitHub org/user name.
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   trailingSlash:false,
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'gongsakura', // Usually your GitHub org/user name.
-  projectName: 'DonotForget', // Usually your repo name.
+
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -25,7 +26,6 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
   presets: [
     [
       'classic',
@@ -57,16 +57,22 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        // logo: {
-        //   alt: 'My Site Logo',
-        //   src: 'img/logo.svg',
-        // },
+        logo: {
+          alt: 'My Site Logo',
+          src: 'img/logo.svg',
+        },
         title: `DonotForget`,
         items: [
           {
-            type: 'doc',
-            label: 'Docs',
-            docId: 'intro',
+            type: 'docSidebar',
+            label: 'Frontend',
+            sidebarId:'FRENTEND',
+            position: 'left',
+          },
+          {
+            type: 'docSidebar',
+            label: 'DevOps',
+            sidebarId: 'DEVOPS',
             position: 'left',
           },
           {

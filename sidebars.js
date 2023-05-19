@@ -13,8 +13,14 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-  docs: [
-    'intro',
+  FRENTEND: [
+    {
+      type: 'category',
+      label: 'Abstract Syntax Tree',
+      items: ['esast/introduction','esast/expression'],
+    },
+  ],
+  DEVOPS:[
     {
       type: 'category',
       label: 'Git',
@@ -23,7 +29,12 @@ const sidebars = {
     {
       type: 'category',
       label: 'Shell Scripting',
-      items: ['shell/variable'],
+      items: ['shell/introduction','shell/variable'],
+    },
+    {
+      type: 'category',
+      label: 'Docker',
+      items: ['docker/introduction','docker/image','docker/container'],
     },
   ]
 };

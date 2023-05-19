@@ -1,7 +1,7 @@
-# Variable
-A **variable** is a character string to which we assign a value, and particularly the value is **untyped** by default. 
+# 1. Variable
+A **variable** is a character string to which we assign a value, and particularly the value is **untyped** by default. Every shell instance(shell process) maintains its variables. 
 
-Every shell instance(shell process) maintains its own variables. For example, if you create a variable "v" in a shell A, then you new a shell window B (created another shell process), the "v" is not existed in shell B.
+For example, in a shell window "A", if you create a variable "v", then in another shell window "B" (another shell process), the "v" does not exist.
 
 ## Declaring Syntax
 There are **no whitespaces** around the **equal sign** `=`.<br/>
@@ -16,7 +16,7 @@ v ="Hello Shell"    # incorrect ❌
 - Only consist of **a-z**, **A-Z**, **0-9** and **underscore(_)** 
 - Can't start with numbers
 - Case sensitive
-- Use Snake Case is a good choice
+- **Snake Case** is a good choice
 - In convention, environment variables use uppercase letters
 
 ```bash showLineNumbers
@@ -26,9 +26,9 @@ HOME_PATH="/usr/bin"   # correct ✅
 1v="Tom"               # incorrect ❌
 ```
 
-## Opertations
+## Operations
 ### Access
-Use **dollar sign** `$` to access variables.
+Use the **dollar sign** `$` to access variables.
 ```bash showLineNumbers
 v="Hello Shell"
 echo $v       # print: "Hello Shell"
@@ -44,7 +44,7 @@ echo ${v}    # print: "Hello Shell"
 <br/>
 
 ### Assign
-To assign plain text, simply using **double quote**, or without quote.
+To assign plain text, simply use the **double quote**, or without quotes.
 ```bash showLineNumbers
 v="Hi, do not forget!"
 v1=Hi
@@ -65,7 +65,7 @@ echo $v1    # print: "6"
 
 <br/>
 
-Sometimes, to assign the output of a function or a command, we need to use a mechanism called **command substitution** with syntax `$(<command> <args>)` or using backward quote `` `<command> <args>` ``.
+Sometimes, to assign **the output** of a function or a command, we need to use the mechanism called **command substitution** with syntax `$(<command> <args>)` or use the backward quote `` `<command> <args>` ``
 ```bash showLineNumbers
 func(){
   if [[ $1 == 1 ]]
@@ -101,16 +101,19 @@ v1=""             # not recommended, it's unclear in semantics
 ### Attributes
 Use `declare` or `typeset` to add attributes to a variable, different attributes have different usages.
 
-Some commonly used attributes are shown as following:
+Some commonly used attributes are shown as follows:
+
 | command| result|
 | :-:|:-:|
-| `declare -p <variable_name>`  |  Print out all attributes of a variable. |
-| `declare -r <variable_name>`  |  Make a variable readonly. |
-| `declare -x <variable_name>`  |  Set a variable as environment variable |
-| `declare -u <variable_name>`  | Set the value of a variable to uppercase  |
-| `declare -l <variable_name>`  |  Set the value of a variable to lowercase. |
+| `declare -p <variable_name>`  |  Print out all attributes of the variable. |
+| `declare -r <variable_name>`  |  Make the variable **readonly**. |
+| `declare -x <variable_name>`  |  Set the variable as a **environment variable** |
+| `declare -u <variable_name>`  |  Set the value to **UPPERCASE**  |
+| `declare -l <variable_name>`  |  Set the value to **lowercase**. |
 
-If you would like to remove attributes, use `+`. For example:
+<br/>
+
+To **remove attributes**, use `+`. For example:
 ```bash showLineNumbers
 declare -r v=readonly!
 declare -p v    # print: "typeset -r v=readonly!"
@@ -120,14 +123,19 @@ declare -p v    # print: "typeset v=readonly!"
 ```
 
 
-## Variables scopes
-Different types of variables have different scopes(contexts), there are three kind of scopes:
+## Variable Scopes
+Different types of variables have different scopes(contexts), there are three kinds of scopes:
 **local**, **global**, and **environment**.
 
-Noted, variables **local** to a subprocess(subshell), it means no matter what kinds of variables delcared in the subprocess, they are unaccessible and invisible to its main process(parent process), **scoped only** in subprocess.
+:::caution
+
+In a subprocess(subshell), variables are **only scoped locally**, meaning no matter what kinds of variables are declared in the subprocess, they are unaccessible and invisible to its main process(parent process),  the in subprocess.
+
+:::
+<br/>
 
 - **Local variables**<br/>
-They are **scoped only** in a function or a block of code, and it declares with `local` prefix.
+They are **scoped only** in a function or a block of code, and it declares with the `local` prefix.
 
   ```bash showLineNumbers
     func(){
@@ -138,7 +146,7 @@ They are **scoped only** in a function or a block of code, and it declares with 
     func      # call the function, print: "Hello Shell"             
     echo $v   # access outside the function, print: null("")
   ```
-    
+  
 <br/>
 
 - **Global variables**<br/>
@@ -158,23 +166,21 @@ They are **scoped only** in a process. They can be declared anywhere, and access
 <br/>
 
 - **Environment variables**<br/>
-  They are **scoped** in both the main process and subprocesses, variables can be declared as environment variables by adding `export` prefix.
+  They are **scoped** in both the main process and subprocesses. Any variable can be declared as a environment variable by a prefix: `export`.
 
-  Use ` env ` or ` printenv ` commands to check whether a variable is the environment variable.
+  Use command ` env ` or ` printenv ` to check all environment variables.
     ```bash showLineNumbers
       # script1.sh
       v="Hello Shell"
       export v
-      
-      # in terminal
-      source script1.sh     # execute script1.sh in current process
-      env                   # now, "v=Hello Shell" is in the output
-      printenv              # now, "v=Hello Shell" is in the output
 
       # script2.sh
       echo $v               # print: "Hello Shell"
       
       # in terminal
+      source script1.sh     # execute script1.sh in current process
+      env                   # now, "v=Hello Shell" is in the output
+      printenv              # now, "v=Hello Shell" is in the output
       sh script2.sh         # execute script2.sh in subprocess, print: "v=Hello Shell"
     ```
 

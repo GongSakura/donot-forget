@@ -1,25 +1,28 @@
 # Hooks
 
-Git hooks provide developers with the ability to run scripts during git executions. Usually, scripts can be Shell, Perl, Python, Javascript(node) or Ruby.
+Git hooks provide developers with the ability to run scripts during git executions. Usually, scripts can be written in Shell, Perl, Python, Javascript or Ruby.
+
+There are two groups of hooks:
+- **client-side**<br/>
+    Hooks run on a **local git repository** when executing commands such as merge, commit, checkout and push.
+- **server-side**<br/>
+    Hooks run on a **remote git repository** when receiving a push from clients and updating branches.
 
 :::tip
 - The default path of hooks is **.git/hooks**, and it can be changed by `git config core.hookspath <path>`.
 
-- Sometimes you may encounter the error: *"The **<path\>** hook was ignored because it's not set as executable"*. To use `chmod +x <path>` to set the **<path\>** as executable.
+- You may encounter the error: *"The **<path\>** hook was ignored because it's not set as executable"*. To use `chmod +x <path>` to set the **<path\>** as executable.
+
 :::
 
 <br/>
 
-There are two group of hooks:
-- **client-side**<br/>
-    Hooks runs on local git repository during such as merge, commit, checkout and push.
-- **server-side**<br/>
-    Hooks runs on remote git repository during receiving push from clients and updating branches.
+
 
 
 ## Client-side Hooks
 :::info
-Here only introduces commonly used hooks.
+Here introduces some commonly used hooks.
 :::
 ### 1. pre-commit
 The hook is invoked immediately by `git commit`, it can be bypassed with `--no-verify`. It takes no arugements, and you can exit with non-zero to abort the commit. Usually, we run code testing, linting or formatting inside this hook.
@@ -48,9 +51,35 @@ Two ways to **"finalize"** commit message:
 
 
 ### 4. post-commit
-The hook is always invoked after made a commit. It takes no arguments and only uses for notification.
+The hook is always invoked after made a commit. It takes no arguments and is only used for notification.
 
 ### 5. pre-merge-commit
+The hook is invoked by `git merge` and can be bypassed with `--no-verify`. It only executed if when a merge is carried out automatically and without **mannually** resolving conflicts, otherwise **pre-commit** will be called. The purpose of this hook is similar with pre-commit. 
+
+For convenience, we can run **pre-commit** hook inside this hook.
+```bash showLineNumbers
+# pre-merge-commit.sh
+# run pre-commit inside the hook
+source ".git/hooks/pre-commit"
+```
+
+In a word, either pre-merge-commit or pre-commit is invoked right after `git merge`.
+
+### 6. post-merge
+The hook is invoked only if a merge is made without mannully resolving conflicts. It takes one argument that is a signal indicating whether the merge is squash merge or not. It can be used to restore
+
+### 7. pre-rebase
+The hook is invoked by `git rebase` and can be bypassed with `--no-verify`. It takes one to two arguments:
+1. the <newbase\>, it can be a branch name or a commit hash.
+2. the name of the branch being rebased. 
+
+### 8. post-rewrite
+The hook is 
+
+
+### 9. post-checkout
+
+
 
 ## Server-side Hooks
 ## Tools for hooks
