@@ -8,7 +8,7 @@ const config = {
   title: 'Learning Journal',
   tagline: 'Dinosaurs are cool',
   url: 'https://gongsakura.github.io',
-  baseUrl: '/',
+  baseUrl: '/donot-forget',
   projectName:"donot-forget",
   organizationName: 'gongsakura', // Usually your GitHub org/user name.
   onBrokenLinks: 'throw',
